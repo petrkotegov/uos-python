@@ -46,13 +46,13 @@ def get_accinfo(name):
     return json_res
 
 
-def get_all_accounts():
-    res = get_accounts_batch("eosio","userres",5)
+def get_all_accounts(code = "eosio", table = "userres", first_batch = 5, other_batches = 100):
+    res = get_accounts_batch(code,table,first_batch)
     #print(res)
     names = res["names"]
     more = res["more"]
     while more != "":
-        res = get_accounts_batch("uos.calcs","account",100,more)
+        res = get_accounts_batch(code,table,other_batches,more)
         #print(res)
         names.extend(res["names"])
         more = res["more"]
