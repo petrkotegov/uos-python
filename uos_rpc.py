@@ -108,6 +108,20 @@ def get_permissions(names):
             comfile.write(update_perm_command(name, perms['active']) + "\n")
             comfile.write(update_perm_command(name, perms['owner']) + "\n")
 
+def get_all_names_with_social(names):
+    result = []
+    index = 0
+    for name in names:
+        print(str(index) + " " + name)
+        index += 1
+        accinfo = get_accinfo(name)
+#        print(accinfo["permissions"])
+        for perm in accinfo["permissions"]:
+            if perm["perm_name"] == "social":
+                result.append(name)
+#                print(str(index) + " " + name)
+    return result
+
 def get_all_emission(names):
     for name in names:
         res = get_table_rows("eosio",name,"userres")
