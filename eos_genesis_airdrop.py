@@ -21,7 +21,7 @@ def create_acc_command(name, key):
 
 def transfer_command(name, sum):
     begin = 'cleos transfer uos.holder uosactvlock1 "'
-    command = begin + ('%.4f' % sum) + '" "' + name + '"'
+    command = begin + ('%.4f' % sum) + ' UOS" "' + name + '"'
     return command
 
 
